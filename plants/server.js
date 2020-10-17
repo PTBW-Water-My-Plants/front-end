@@ -7,6 +7,19 @@ const app = express();
 app.use(bodyParser.json());
 app.use(CORS());
 
+// Each array is a database
+const users = [
+	{
+		id: 0,
+		name: 'Big stres' ,
+		email: 'nias@nass.com',
+		password: 'f3bigstairs3hf33',
+		phone: '383233222',
+
+	}
+]
+
+
 const plants = [
 	{
 		id: 0,
@@ -52,6 +65,10 @@ const plants = [
 	},
 ];
 
+
+
+/// Plants
+
 app.get('/api/plants', (req, res) => {
 	res.status(200).json(plants.map(({ id, title, director, metascore }) => ({ id, title, director, metascore })));
 });
@@ -65,6 +82,33 @@ app.post('/api/plants', (req, res) => {
 	if (req.body.id !== undefined) plants.push(req.body);
 	res.status(201).json(plants);
 });
+
+
+
+// Users
+app.get('/api/users', (req, res) => {
+	res.status(200).json(users.map(({ id, name, 
+		 email, password, phone }) => ({ id, 
+			name,  email, password, phone })));
+});
+
+app.get('/api/users/:id', (req, res) => {
+	const plant = plants.find(plant => 
+		plant.id.toString() === req.params.id);
+	res.status(200).json(plant);
+});
+
+app.post('/api/users', (req, res) => {
+	if (req.body.id !== undefined)
+	 users.push(req.body);
+	res.status(201).json(users);
+});
+
+
+
+
+
+// Connectivity
 
 app.listen(5000, () => {
 	console.log('Server listening on port 5000');

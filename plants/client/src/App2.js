@@ -3,18 +3,15 @@ import axios from 'axios';
 import Movie from './Movies/Movie';
 import MovieList from './Movies/MovieList';
 import SavedList from './Movies/SavedList';
-import Form from './Form/Form';
 import {BrowserRouter as Router, Route, Link, Switch, useParams} from 'react-router-dom';
 
 export default function App () {
   const [saved, setSaved] = useState([]); // Stretch: the ids of "saved" movies
   const [movieList, setMovieList] = useState([]);
-  const [userList,setUserList] = useState([]);
-  const [loggedN,setLoggedN] = useState(false);
 
   useEffect(() => {
-     const  getMovies = async() => {
-      await axios
+    const getMovies = () => {
+      axios
         .get('http://localhost:5000/api/plants') // Study this endpoint with Postman
         .then(response => {
           console.log(response.data);
@@ -23,20 +20,7 @@ export default function App () {
         .catch(error => {
           console.error('Server Error', error);
         });
-
-        await axios
-        .get('http://localhost:5000/api/users') // Study this endpoint with Postman
-        .then(response => {
-          console.log(response.data);
-          // setMovieList(response.data);
-          setUserList(response.data);
-        })
-        .catch(error => {
-          console.error('Server Error get users', error);
-        });
-    };
-
-
+    }
     getMovies();
   }, []); 
 
@@ -51,13 +35,7 @@ export default function App () {
       <Switch>
         
         <Route exact path="/">
-          {
-            loggedN 
-            ?
-              <MovieList movies={movieList} />
-              :
-                <Form  />
-          }
+          <MovieList movies={movieList} />
         </Route>
         <Route path="/plants/:movieID">
           <Movie  key={movieList.id} movies={movieList} />
