@@ -4,7 +4,7 @@ import { Route, useHistory, Link } from 'react-router-dom'
 
 
 const Form =(props) => {
-    const { history } = useHistory();
+    const  history  = useHistory();
     const { runew } = props 
     const [changes, setChanges] = useState({id:0,name:"",email:"", password: "",chkevt:false})
   // Once the submit button is pressed this handles that state
@@ -18,6 +18,7 @@ const Form =(props) => {
         const ch= {...changes,[e.target.name]: e.target.value};
     
             setChanges(ch);
+            setUsrs(ch);
             // console.log(changes);
     };
     
@@ -25,14 +26,14 @@ const Form =(props) => {
    
 
 
-        history.push(`/users/`)
+       
         e.preventDefault();
         const ch= {...changes};
         console.log(e);
             setUsrs(ch);
             console.log(usrs)
             console.log(res);
-            
+            history.push(`/users/?:name=${usrs.name}`)
         // setSubmited(true);
         //  return {...changes};
         props.handleSubmite(usrs);
@@ -59,7 +60,7 @@ const Form =(props) => {
 
     useEffect( () =>{
         postit();
-    },[])
+    },[usrs])
 
     const handleChkChange = (e)  =>{
 // TODO add the checked /term button into here
