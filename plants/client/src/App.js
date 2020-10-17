@@ -34,19 +34,20 @@ export default function App () {
     const uId = uid;
     const theE = email;
     console.log(uId);
-     const  getMovies = async() => {
-      await axios
-        .get('http://localhost:5000/api/plants') // Study this endpoint with Postman
-        .then(response => {
-          console.log(response.data);
-          setMovieList(response.data);
-        })
-        .catch(error => {
-          console.error('Server Error', error);
-        });
+     const  getMovies = () => {
+      // await axios
+      //   .get('http://localhost:5000/api/plants') // Study this endpoint with Postman
+      //   .then(response => {
+      //     console.log(response.data);
+      //     setMovieList(response.data);
+      //   })
+      //   .catch(error => {
+      //     console.error('Server Error', error);
+      //   });
 
-        await axios
-        .get(`http://localhost:5000/api/plants/users`) // Study this endpoint with Postman
+        if(loggedN === false){
+           axios
+        .get(`http://localhost:5000/api/users`) // Study this endpoint with Postman
         .then(response => {
           console.log(response.data);
           // setMovieList(response.data);
@@ -55,6 +56,7 @@ export default function App () {
         .catch(error => {
           console.error('Server Error get users', error);
         });
+        }
     };
 
 
@@ -80,7 +82,7 @@ export default function App () {
                 <Form  handleSubmite={handleSubmite}/>
           }
         </Route>
-        <Route path="/users/:id">
+        <Route path="/users/:uid">
             <Fcomp />
         </Route>
         <Route path="/plants/:movieID">

@@ -22,30 +22,44 @@ const Form =(props) => {
     };
     
     const  handleSubmite = (e) =>{
-        history.push(`/api/plants/users/:uid=${changes.id}`)
+   
+
+
+        history.push(`/users/`)
         e.preventDefault();
         const ch= {...changes};
         console.log(e);
             setUsrs(ch);
             console.log(usrs)
             console.log(res);
-        setSubmited(true);
-        //  return {...changes};
-        
-            axios.post(`http://localhost:5000/api/plants/users/`+changes.id)
-            .then(evn =>{
-                console.log('ev')
-                console.log(evn);
-                setRes(evn.data);
-                props.handleSubmite(changes)
-                
-            })
-            .catch(er =>{
-                console.log(er);
-            })
             
+        // setSubmited(true);
+        //  return {...changes};
+        props.handleSubmite(usrs);
+        
+            
+          
             
     };
+
+    const postit = () =>{
+                
+        axios.post(`http://localhost:5000/api/users/`,usrs)
+    .then(evn =>{
+        console.log('ev')
+        console.log(evn);
+        setRes(evn.data);
+      
+        
+    })
+    .catch(er =>{
+        console.log(er);
+    })
+    }
+
+    useEffect( () =>{
+        postit();
+    },[])
 
     const handleChkChange = (e)  =>{
 // TODO add the checked /term button into here
