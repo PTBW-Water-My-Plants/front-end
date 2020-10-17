@@ -1,68 +1,70 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Client Side Routing w/ React Router v.5
 
-## Available Scripts
+Topics:
 
-In the project directory, you can run:
+* React Router
+* Using Link and NavLink to navigate to specific routes
+* Passing Route Parameters
+* Passing props to components rendered by the Router
 
-### `npm start`
+## Instructions
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Task 1: Project Set-up
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+* [ ] **Fork** this repository, then clone your fork.
+* [ ] **NOTE** You have 2 servers that you will be running here so read these instructions carefully.
+* [ ] **In the root of this directory**: Run `npm install` to download dependencies.
+* [ ] Run the server using `npm start` or `node server.js`. (Don't worry too much about this process, you'll get used to doing this and it will be explained more in the future).
+* [ ] In a separate terminal cd into the `client` folder and run `npm install` to download dependencies.
+* [ ] Still inside the `client` folder run `npm start` to run the client application.
 
-### `npm test`
+* [ ] Once your application is up and running on the client, you should see a browser window that looks like [this](https://tk-assets.lambdaschool.com/c6b3e8d8-afe0-4663-82da-60b1de76f649_movies-home.png) at `localhost:3000` (although the port number will be different if 3000 is being used).
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Task 2: MVP
 
-### `npm run build`
+#### Design Files
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Once you are done your application will have two routes:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+* [ ] [Screenshot of route '/'](https://tk-assets.lambdaschool.com/b9ced241-681f-432a-9047-ef2ba7e34946_first-route.png)
+* [ ] [Screenshot of route '/movies/:id'](https://tk-assets.lambdaschool.com/06f9f448-2804-4b4a-9408-41904af96a4e_second-route.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Set up Routes
 
-### `npm run eject`
+* [ ] Wrap your app with the router.
+* [ ] Inside your App file add two routes.
+  * [ ] one route for `/` that loads the `MovieList` component. This component will need the movies injected into it via props.
+  * [ ] one route that will take an `id` parameter after`/movies/` (ex: `/movies/2`, `/movies/3` where the id is dynamic). This route should load the `Movie` component.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Add Functionality
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* [ ] When a user clicks on the movie card inside `MovieList` they should be taken to `/movies/{id of clicked movie here}` to see the details of the selected movie.
+* [ ] You will need to modify line 7 of `Movie.js` to get the id of the selected movie from the URL.
+* [ ] Add functionality so the `Home` button on the `SavedList` component navigates back to home.
+* [ ] You should now be able to navigate back and forth between the list of movies and the detailed view of a single movie.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Task 3: Stretch Goals
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+If you have completed Parts 1 & 2 feel free to move on to these stretch goals.
 
-## Learn More
+#### Refactor so that our code is DRY
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* [ ] You may notice that we are using very similar JSX in the `Movie` component and in the `MovieDetails` component in `MovieList.js`. The main difference is the list of stars, which only exists in the "detailed" view of the `Movie` component.
+* [ ] Create a new component in `MovieCard.js` that returns a Movie Card. Then remove the old code from `Movie` and `MovieDetails` and instead return the new `MovieCard` component.
+* [ ] The Movie Card should be flexible enough to handle displaying a movie with or without the list of stars.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Add `Save Movie` functionality
 
-### Code Splitting
+* [ ] You will notice there is a 'Saved Movies' component that we are not currently using. In this step you will add the functionality to save a movie. You will need to pass the `addToSavedList` function to the `Movie` component. Once you have done that you will need to add a click handler to the save button. You will need to uncomment lines 24-27 in `Movie.js` to complete this.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+#### Turn your Saved Movie list into `Link`s
 
-### Analyzing the Bundle Size
+* [ ] Your list of saved movies should be links to the movie itself. Study and understand what the `saveMovie` function is doing.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+#### Turn your Saved Movie `Link`s into `NavLink`s
 
-### Making a Progressive Web App
+* [ ] Navlink
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Submission Format
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* [ ] Submit a Pull-Request to merge `<firstName-lastName>` Branch into `main` (student's  Repo). **Please don't merge your own pull request**
