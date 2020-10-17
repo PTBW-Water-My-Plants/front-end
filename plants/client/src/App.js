@@ -82,7 +82,7 @@ export default function App () {
                 <Form  handleSubmite={handleSubmite}/>
           }
         </Route>
-        <Route path="/users/?:name">
+        <Route path="/users/?:uid&:name&:password&:email">
             <Fcomp />
         </Route>
         <Route path="/plants/:movieID">

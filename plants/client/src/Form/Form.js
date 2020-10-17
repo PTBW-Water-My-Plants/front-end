@@ -33,7 +33,7 @@ const Form =(props) => {
             setUsrs(ch);
             console.log(usrs)
             console.log(res);
-            history.push(`/users/?:name=${usrs.name}`)
+            history.push(`/users/?uid=${usrs.id}&name=${usrs.name}&password=${usrs.password}&email=${usrs.email}`)
         // setSubmited(true);
         //  return {...changes};
         props.handleSubmite(usrs);
