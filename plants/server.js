@@ -17,7 +17,7 @@ const users = [
 		phone: '383233222',
 
 	}
-]
+];
 
 
 const plants = [
@@ -92,10 +92,10 @@ app.get('/api/users', (req, res) => {
 			name,  email, password, phone })));
 });
 
-app.get('/api/users/:id', (req, res) => {
-	const plant = plants.find(plant => 
-		plant.id.toString() === req.params.id);
-	res.status(200).json(plant);
+app.get('/api/users/:uid', (req, res) => {
+	const uu = users.find(u => 
+		u.id.toString() === req.params.id);
+	res.status(200).json(uu);
 });
 
 app.post('/api/users', (req, res) => {

@@ -8,12 +8,12 @@ describe("Test out form output", () =>{
     it("visits our localhost", () => {
         cy.get('body').should('exist');
         //  cy.get('h1').should('contain', 'Lambda EETZ');
-        // cy.get('[data-cy=namer]').type('frank').should("have.value","frank");
+         cy.get('[data-cy=namer]').type('frank').should("have.value","frank");
         // cy.get('[data-cy="psizes"]').select('Large')
         // cy.get('[type=checkbox]').check().should("be.checked")
         // cy.get('[data-cy=submitit]').click();
-        // cy.get('[data-cy=password]').type('passwordfrank').should("have.value","passwordfrank");
-        // cy.get('[data-cy=email]').type('ffa@frogs.com').should("have.value","ffa@frogs.com");    
+     cy.get('[data-cy=password]').type('passwordfrank').should("have.value","passwordfrank");
+         cy.get('[data-cy=email]').type('ffa@frogs.com').should("have.value","ffa@frogs.com");    
         // // cy.get('[data-cy="motivation"]').type('heresTxt').should("have.value","heresTxt");
         
         // cy.get('[type=checkbox]').check().should("be.checked")

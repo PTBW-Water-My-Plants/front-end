@@ -4,15 +4,36 @@ import Movie from './Movies/Movie';
 import MovieList from './Movies/MovieList';
 import SavedList from './Movies/SavedList';
 import Form from './Form/Form';
+import Fcomp from './Fcomp/Fcomp';
 import {BrowserRouter as Router, Route, Link, Switch, useParams} from 'react-router-dom';
 
 export default function App () {
+  const { uid, name, password, email } = useParams();
   const [saved, setSaved] = useState([]); // Stretch: the ids of "saved" movies
   const [movieList, setMovieList] = useState([]);
   const [userList,setUserList] = useState([]);
   const [loggedN,setLoggedN] = useState(false);
+  
+  const [newU,setNewU] = useState(	{
+		id: 0,
+		name: 'Big stres' ,
+		email: 'nias@nass.com',
+		password: 'f3bigstairs3hf33',
+		phone: '3422345444',
 
+	});
+
+  const handleSubmite = (changes) =>{
+    // ev.preventDefault();
+    const ch = {...changes};
+    setNewU(ch);
+    console.log('handledsubmite');
+    console.log(newU);
+  }
   useEffect(() => {
+    const uId = uid;
+    const theE = email;
+    console.log(uId);
      const  getMovies = async() => {
       await axios
         .get('http://localhost:5000/api/plants') // Study this endpoint with Postman
@@ -25,7 +46,7 @@ export default function App () {
         });
 
         await axios
-        .get('http://localhost:5000/api/users') // Study this endpoint with Postman
+        .get(`http://localhost:5000/api/plants/users`) // Study this endpoint with Postman
         .then(response => {
           console.log(response.data);
           // setMovieList(response.data);
@@ -38,7 +59,7 @@ export default function App () {
 
 
     getMovies();
-  }, []); 
+  }, [loggedN]); 
 
   const addToSavedList = id => {
     
@@ -56,8 +77,11 @@ export default function App () {
             ?
               <MovieList movies={movieList} />
               :
-                <Form  />
+                <Form  handleSubmite={handleSubmite}/>
           }
+        </Route>
+        <Route path="/users/:id">
+            <Fcomp />
         </Route>
         <Route path="/plants/:movieID">
           <Movie  key={movieList.id} movies={movieList} />
