@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Login from './Login';
 import Movie from './Movies/Movie';
 import MovieList from './Movies/MovieList';
 import SavedList from './Movies/SavedList';
@@ -78,19 +79,28 @@ export default function App () {
     <div>
       <Switch>
         
-        <Route exact path="/">
+        <Route  exact path="/">
           {
             loggedN 
             ?
-              <MovieList movies={movieList} />
+              <Login  />
               :
                 <Form  handleSubmite={handleSubmite}/>
          
          
          }
         </Route>
+        <Route path="/register">
+          <Form  handleSubmite={handleSubmite}/>
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route  path="/plants">
+          <MovieList movies={movieList} />
+        </Route>
         <Route path="/users/?:uid&:name&:password&:email">
-           <Fcomp name=":name"/> 
+           <Fcomp email=":name"/> 
         </Route>
         <Route path="/plants/:movieID">
           <Movie  key={movieList.id} movies={movieList} />

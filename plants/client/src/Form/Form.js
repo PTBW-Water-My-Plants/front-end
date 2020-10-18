@@ -133,7 +133,7 @@ const Form =(props) => {
           
                submited
                ?
-                <Fcomp id={usrs.id} name={usrs.name}  />
+                <Fcomp id={usrs.id} name={usrs.name}  email={usrs.email} password={usrs.password}/>
                 :
                 <form className="App"  onSubmit={handleSubmite}>
                      

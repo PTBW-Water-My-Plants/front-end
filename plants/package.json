@@ -1,5 +1,5 @@
 {
-  "name": "movies",
+  "name": "plants",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LambdaSchool/SPA-Routing-React"
+    "url": "git+https://github.com/PTBW-Water-My-Plants/front-end/"
   },
-  "author": "Lambda School",
+  "author": "The Oct 2020 Build Week Group at Lambda School Of Code",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LambdaSchool/SPA-Routing-React/issues"
+    "url": "https://github.com/PTBW-Water-My-Plants/front-end/issues"
   },
-  "homepage": "hhttps://github.com/LambdaSchool/SPA-Routing-React#readme",
+  "homepage": "hhttps://github.com/PTBW-Water-My-Plants/front-end#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
