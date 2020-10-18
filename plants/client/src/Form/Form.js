@@ -18,25 +18,51 @@ const Form =(props) => {
         const ch= {...changes,[e.target.name]: e.target.value};
     
             setChanges(ch);
-            setUsrs(ch);
+    //    if(submited){
+    //        setUsrs(ch);
+    //    }
             // console.log(changes);
     };
+
+
+    const clickedup = (e)=>{
+           e.persist();
+        // e.persist();
+        // setSubmited(true);
+        const ch= {...changes,[e.target.name]: e.target.value};
+        setUsrs({...changes});
+        setSubmited(true);
+}
+
+    const btnChange = (e)=>{
+           
+            e.persist();
+            // setSubmited(true);
+           
+            const ch= {...changes,[e.target.name]: e.target.value};
+        
+            setUsrs({...changes,[e.target.name]: e.target.value});
+            // setSubmited(true);
+        
+    }
     
     const  handleSubmite = (e) =>{
    
 
-
        
+        if(submited){
+            
         e.preventDefault();
         const ch= {...changes};
         console.log(e);
-            setUsrs(ch);
+            // setUsrs(changes);
             console.log(usrs)
             console.log(res);
             history.push(`/users/?uid=${usrs.id}&name=${usrs.name}&password=${usrs.password}&email=${usrs.email}`)
-        // setSubmited(true);
+
         //  return {...changes};
         props.handleSubmite(usrs);
+        }
         
             
           
@@ -45,22 +71,27 @@ const Form =(props) => {
 
     const postit = () =>{
                 
+       if(submited){
         axios.post(`http://localhost:5000/api/users/`,usrs)
-    .then(evn =>{
-        console.log('ev')
-        console.log(evn);
-        setRes(evn.data);
-      
-        
-    })
-    .catch(er =>{
-        console.log(er);
-    })
+        .then(evn =>{
+            console.log('ev')
+            console.log(evn);
+            setRes(evn.data);
+          
+            
+        })
+        .catch(er =>{
+            console.log(er);
+        })
+       }
     }
 
     useEffect( () =>{
+        // if(submited){
+        //     setUsrs(changes);
+        // }
         postit();
-    },[usrs])
+    },[submited])
 
     const handleChkChange = (e)  =>{
 // TODO add the checked /term button into here
@@ -86,7 +117,7 @@ const Form =(props) => {
            <h1>Water your plants!</h1>
             { // Nested if statement 4 submited
           
-                <form className="App" onSubmit={handleSubmite}>
+                <form className="App"   onChange={e => btnChange(e)}  onSubmit={handleSubmite}>
                      
                      <h1>Sign Up, Right-Now!</h1>
                     <label>
@@ -107,7 +138,7 @@ const Form =(props) => {
                         </label>
                     </Link>
                     <input type="checkbox" onChange={e =>handleChkChange(e) } />
-                    <button type="submit" disabled={submited} >Sign Me Up</button>
+                    <button type="submit" onClick={clickedup} disabled={submited} >Sign Me Up</button>
     
             </form>
             }

@@ -29,6 +29,7 @@ export default function App () {
     setNewU(ch);
     console.log('handledsubmite');
     console.log(newU);
+    setLoggedN(true);
   }
   useEffect(() => {
     const uId = uid;
@@ -52,6 +53,7 @@ export default function App () {
           console.log(response.data);
           // setMovieList(response.data);
           setUserList(response.data);
+    
         })
         .catch(error => {
           console.error('Server Error get users', error);
