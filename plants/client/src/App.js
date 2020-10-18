@@ -11,6 +11,7 @@ export default function App () {
   const { uid, name, password, email } = useParams();
   const [saved, setSaved] = useState([]); // Stretch: the ids of "saved" movies
   const [movieList, setMovieList] = useState([]);
+  // Our response from querying /api/users
   const [userList,setUserList] = useState([]);
   const [loggedN,setLoggedN] = useState(false);
   
@@ -62,6 +63,8 @@ export default function App () {
     };
 
 
+    
+
     getMovies();
   }, [loggedN]); 
 
@@ -82,10 +85,12 @@ export default function App () {
               <MovieList movies={movieList} />
               :
                 <Form  handleSubmite={handleSubmite}/>
-          }
+         
+         
+         }
         </Route>
         <Route path="/users/?:uid&:name&:password&:email">
-            <Fcomp />
+           <Fcomp name=":name"/> 
         </Route>
         <Route path="/plants/:movieID">
           <Movie  key={movieList.id} movies={movieList} />

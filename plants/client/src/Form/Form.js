@@ -1,6 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { Route, useHistory, Link } from 'react-router-dom'
+import Fcomp from '../Fcomp/Fcomp';
+
+/*
+Firefox says
+Warning: Can't perform a React state update on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in a useEffect cleanup function.
+    in Form (at App.js:84)
+    in Route (at App.js:78) index.js:1
+may have to build a reducer 
+https://www.debuggr.io/react-update-unmounted-component/
+https://stackoverflow.com/questions/58038008/how-to-stop-memory-leak-in-useeffect-hook-react/58038029
+https://medium.com/@selvaganesh93/how-to-clean-up-subscriptions-in-react-components-using-abortcontroller-72335f19b6f7
+
+*/
 
 
 const Form =(props) => {
@@ -29,22 +42,22 @@ const Form =(props) => {
            e.persist();
         // e.persist();
         // setSubmited(true);
-        const ch= {...changes,[e.target.name]: e.target.value};
-        setUsrs({...changes});
+        // const ch= {...changes,[e.target.name]: e.target.value};
+        setUsrs(changes);
         setSubmited(true);
 }
 
-    const btnChange = (e)=>{
+    // const btnChange = (e)=>{
            
-            e.persist();
-            // setSubmited(true);
+    //         e.persist();
+    //         // setSubmited(true);
            
-            const ch= {...changes,[e.target.name]: e.target.value};
+    //         const ch= {...changes,[e.target.name]: e.target.value};
         
-            setUsrs({...changes,[e.target.name]: e.target.value});
-            // setSubmited(true);
+    //         setUsrs({...changes,[e.target.name]: e.target.value});
+    //         // setSubmited(true);
         
-    }
+    // }
     
     const  handleSubmite = (e) =>{
    
@@ -54,6 +67,7 @@ const Form =(props) => {
             
         e.preventDefault();
         const ch= {...changes};
+        console.log('handle form submite');
         console.log(e);
             // setUsrs(changes);
             console.log(usrs)
@@ -117,30 +131,34 @@ const Form =(props) => {
            <h1>Water your plants!</h1>
             { // Nested if statement 4 submited
           
-                <form className="App"   onChange={e => btnChange(e)}  onSubmit={handleSubmite}>
+               submited
+               ?
+                <Fcomp id={usrs.id} name={usrs.name}  />
+                :
+                <form className="App"  onSubmit={handleSubmite}>
                      
-                     <h1>Sign Up, Right-Now!</h1>
-                    <label>
-                        Name
-                    </label>
-                    <input data-cy="namer" type="text" name="name" placeholder="Enter Name" onChange={e =>handleChange(e)} />
-                    <label>
-                        Password
-                    </label>
-                    <input data-cy="password" type="password" name="password" placeholder="Enter Password" onChange={e =>handleChange(e)} />
-                    <label>
-                        E-mail
-                    </label>
-                    <input type="text" data-cy="email" name="email" placeholder="Valid E-Mail"  onChange={e =>handleChange(e)} />
-                    <Link to="/terms">
-                        <label>
-                            Terms Of Services
-                        </label>
-                    </Link>
-                    <input type="checkbox" onChange={e =>handleChkChange(e) } />
-                    <button type="submit" onClick={clickedup} disabled={submited} >Sign Me Up</button>
-    
-            </form>
+                <h1>Sign Up, Right-Now!</h1>
+               <label>
+                   Name
+               </label>
+               <input data-cy="namer" type="text" name="name" placeholder="Enter Name" onChange={e =>handleChange(e)} />
+               <label>
+                   Password
+               </label>
+               <input data-cy="password" type="password" name="password" placeholder="Enter Password" onChange={e =>handleChange(e)} />
+               <label>
+                   E-mail
+               </label>
+               <input type="text" data-cy="email" name="email" placeholder="Valid E-Mail"  onChange={e =>handleChange(e)} />
+               <Link to="/terms">
+                   <label>
+                       Terms Of Services
+                   </label>
+               </Link>
+               <input type="checkbox" onChange={e =>handleChkChange(e) } />
+               <button type="submit" onClick={e =>clickedup(e)} disabled={submited} >Sign Me Up</button>
+
+       </form>
             }
        </div>
     );
