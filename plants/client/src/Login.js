@@ -7,7 +7,8 @@ import { Route, Link } from 'react-router-dom'
 
 const Login =(props) => {
   const { uL } = props;
-  const [usrs,setUsrs] = useState({id:0,name:"",email:"",password:""})
+  const [usrs,setUsrs] = useState({id:0,name:"",email:"",
+  password:""})
   const [res,setRes] = useState([]);
   const handleChange = (e) =>{
       e.persist();
@@ -21,8 +22,19 @@ const Login =(props) => {
   };
 
   const submited = () =>{
-    console.log('find'+usrs.logname);
-    console.log(uL[uL.length -1].name);
+    console.log('find  '+usrs.logname);
+    // console.log(uL[uL.length -1].name);
+
+    const inthere = uL.filter(u => 
+     u.name ?  u.name === usrs.logname && u.password === usrs.logpass : ['nope'] );
+    
+    if(inthere.length > 0){
+      console.log("FOUND USER")
+      console.log(JSON.stringify(inthere));
+    }else{
+      console.log('Nope is not in there')
+    }
+    // console.log(inthere);
     
   };
 
