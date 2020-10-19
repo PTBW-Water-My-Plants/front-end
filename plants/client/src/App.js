@@ -81,20 +81,21 @@ export default function App () {
         
         <Route  exact path="/">
           {
-            loggedN 
-            ?
-              <Login  />
-              :
-                <Form  handleSubmite={handleSubmite}/>
+            // loggedN 
+            // ?
+            //   <Login  />
+            //   :
+            //     <Form  handleSubmite={handleSubmite}/>
          
          
          }
+         <MovieList movies={movieList} />
         </Route>
         <Route path="/register">
           <Form  handleSubmite={handleSubmite}/>
         </Route>
         <Route path="/login">
-          <Login />
+          <Login uL={userList} />
         </Route>
         <Route  path="/plants">
           <MovieList movies={movieList} />
