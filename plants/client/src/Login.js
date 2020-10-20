@@ -2,14 +2,18 @@
 
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, useHistory } from 'react-router-dom'
+import Fcomp from './Fcomp/Fcomp';
+
 // TODO: Make a forgot password link
 
 const Login =(props) => {
+  const history = useHistory();
   const { uL } = props;
   const [usrs,setUsrs] = useState({id:0,name:"",email:"",
   password:""})
   const [res,setRes] = useState([]);
+  const [logged,setLogged] = useState(false);
   const handleChange = (e) =>{
       e.persist();
       const ch= {...usrs,[e.target.name]: e.target.value};
@@ -18,27 +22,37 @@ const Login =(props) => {
   //    if(submited){
   //        setUsrs(ch);
   //    }
+  
           console.log(usrs);
   };
 
-  const submited = () =>{
+  const submited = (e) =>{
+    e.preventDefault();
+
+    setLogged(true);
     console.log('find  '+usrs.logname);
     // console.log(uL[uL.length -1].name);
 
     const inthere = uL.filter(u => 
-     u.name ?  u.name === usrs.logname && u.password === usrs.logpass : ['nope'] );
+     u.name  === usrs.logname && u.password === usrs.logpass );
     
     if(inthere.length > 0){
       console.log("FOUND USER")
       console.log(JSON.stringify(inthere));
+      setRes(inthere);
+      history.push(`/login?logname=${inthere.name}&logpass${inthere.password}&submitReq=on`);
     }else{
       console.log('Nope is not in there')
     }
-    // console.log(inthere);
     
+    // props.handleLogin(inthere);
   };
 
     return (
+      logged
+      ?
+        <Fcomp />
+        :
       <div className="App">
           <form className="App" onSubmit={submited}>
             <label htmlFor="loggingin">
@@ -56,7 +70,7 @@ const Login =(props) => {
             <label htmlFor="submitReq">
               Login
             </label>
-            <button name="submitReq" type="submit">Login Now!</button>
+            <button name="submitReq" type="submit" >Login Now!</button>
           </form>
       </div>      
     );

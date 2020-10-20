@@ -24,7 +24,11 @@ export default function App () {
 		phone: '3422345444',
 
 	});
+const handleLogin = (user) =>{
 
+
+  console.log(user);
+}
   const handleSubmite = (changes) =>{
     // ev.preventDefault();
     const ch = {...changes};
@@ -95,8 +99,12 @@ export default function App () {
           <Form  handleSubmite={handleSubmite}/>
         </Route>
         <Route path="/login">
-          <Login uL={userList} />
+          <Login  uL={userList} />
         </Route>
+        <Route path="/login?:logname&:logpass">
+          <Login submited={handleLogin}uL={userList} />
+        </Route>
+        
         <Route  path="/plants">
           <MovieList movies={movieList} />
         </Route>
