@@ -15,13 +15,13 @@ export default function Fcomp(props) {
   const history = useHistory();
 
   // const { name } = useParams();
-  const { name, email, password } = props;
+  const { name, email, password, logname, logpass} = props;
   const namer = name;
   const emailer = email;
   return (
     <div className="App">
       <Ptag>
-          Hello {namer } your Email is { emailer } with a password of { password }
+          Hello {namer } {logname} your Email is { emailer } with a password of { password } { logpass}
       </Ptag>
       
        

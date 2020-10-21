@@ -40,7 +40,7 @@ const Login =(props) => {
       console.log("FOUND USER")
       console.log(JSON.stringify(inthere));
       setRes(inthere);
-      history.push(`/login?logname=${inthere.name}&logpass${inthere.password}&submitReq=on`);
+      history.push(`/login?logname=${inthere[inthere.length-1].name}&logpass${inthere[inthere.length-1].password}&submitReq=on`);
     }else{
       console.log('Nope is not in there')
     }

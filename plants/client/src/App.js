@@ -9,7 +9,7 @@ import Fcomp from './Fcomp/Fcomp';
 import {BrowserRouter as Router, Route, Link, Switch, useParams} from 'react-router-dom';
 
 export default function App () {
-  const { uid, name, password, email } = useParams();
+  const { uid, name, password, email, logname, logpass } = useParams();
   const [saved, setSaved] = useState([]); // Stretch: the ids of "saved" movies
   const [movieList, setMovieList] = useState([]);
   // Our response from querying /api/users
@@ -101,8 +101,12 @@ const handleLogin = (user) =>{
         <Route path="/login">
           <Login  uL={userList} />
         </Route>
-        <Route path="/login?:logname&:logpass">
-          <Login submited={handleLogin}uL={userList} />
+        <Route path="/login/?:logname&:logpass">
+          {/* <Login submited={handleLogin}uL={userList} /> */
+             <Fcomp email={email}/> 
+          
+          
+          }
         </Route>
         
         <Route  path="/plants">
