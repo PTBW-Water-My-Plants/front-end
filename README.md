@@ -71,6 +71,11 @@ You can now change your main deploy branch from "master" to "main" for both manu
 Existing Git repository
 
 For existing repositories, simply add the heroku remote
+says its here 
 
 $ heroku git:remote -a water-the-plants-app
 
+ https://water-the-plants-app.herokuapp.com/ deployed to Heroku
+remote: 
+remote: Verifying deploy... done.
+To https://git.heroku.com/water-the-plants-app.git
