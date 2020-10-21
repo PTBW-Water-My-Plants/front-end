@@ -40,7 +40,7 @@ const Login =(props) => {
       console.log("FOUND USER")
       console.log(JSON.stringify(inthere));
       setRes(inthere);
-      history.push(`/login?logname=${inthere[inthere.length-1].name}&logpass${inthere[inthere.length-1].password}&submitReq=on`);
+      history.push(`/login/?logname=${inthere[inthere.length-1].name}&logpass${inthere[inthere.length-1].password}&submitReq=on`);
     }else{
       console.log('Nope is not in there')
     }
@@ -51,7 +51,8 @@ const Login =(props) => {
     return (
       logged
       ?
-        <Fcomp />
+      <Fcomp id={res[res.length-1].id} name={res[res.length-1].name} 
+       email={res[res.length-1].email} password={res[res.length-1].password}/>
         :
       <div className="App">
           <form className="App" onSubmit={submited}>

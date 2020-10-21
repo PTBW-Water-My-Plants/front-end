@@ -103,7 +103,7 @@ const handleLogin = (user) =>{
         </Route>
         <Route path="/login/?:logname&:logpass">
           {/* <Login submited={handleLogin}uL={userList} /> */
-             <Fcomp email={email}/> 
+             <Fcomp props={newU}/> 
           
           
           }
