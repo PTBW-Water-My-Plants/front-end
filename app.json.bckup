@@ -32,6 +32,19 @@
       }
     },
     "image": "heroku/nodejs",
+    "addons": [
+      "openredis",
+      {
+        "plan": "mongolab:shared-single-small",
+        "as": "MONGO"
+      },
+      {
+        "plan": "heroku-postgresql",
+        "options": {
+          "version": "9.5"
+        }
+      }
+    ],
     "buildpacks": [
       {
         "url": "https://github.com/stomita/heroku-buildpack-phantomjs"
