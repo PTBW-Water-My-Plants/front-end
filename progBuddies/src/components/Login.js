@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import { StoreContext } from '../contextAPI/Context.js';
-
+// import { StoreContext } from '../contextAPI/Context.js';
+import { StoreContext }  from '../contextAPI/Context'
 import { axiosWithAuth } from '../Auth/axiosWithAuth.js';
 
 export default function Login(props) {

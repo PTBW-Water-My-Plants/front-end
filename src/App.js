@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Login from './Login';
-import Movie from './Movies/Movie';
-import MovieList from './Movies/MovieList';
-import SavedList from './Movies/SavedList';
+// import Login from './Login';
+import Movie from './Plants/Movie';
+import MovieList from './Plants/MovieList';
+import SavedList from './Plants/SavedList';
 import Form from './Form/Form';
 import Fcomp from './Fcomp/Fcomp';
+import SignUp from './Auth/SignUp';
+import Login from './Components/Login';
 import {BrowserRouter as Router, Route, Link, Switch, useParams} from 'react-router-dom';
 
 export default function App () {
@@ -41,7 +43,7 @@ const handleLogin = (user) =>{
     const uId = uid;
     const theE = email;
     console.log(uId);
-     const  getMovies = () => {
+     const  getPlants = () => {
       // await axios
       //   .get('http://localhost:5000/api/plants') // Study this endpoint with Postman
       //   .then(response => {
@@ -83,7 +85,7 @@ put/delete: https://watertheplants.herokuapp.com/api/plants/:id   Slightly cuter
 
     
 
-    getMovies();
+    getPlants();
   }, [loggedN]); 
 
   const addToSavedList = id => {
@@ -96,19 +98,12 @@ put/delete: https://watertheplants.herokuapp.com/api/plants/:id   Slightly cuter
     <div>
       <Switch>
         
-        <Route  exact path="/">
-          {
-            // loggedN 
-            // ?
-            //   <Login  />
-            //   :
-            //     <Form  handleSubmite={handleSubmite}/>
+        
+          <Route exact path="/" component={SignUp} />
+        <Route exact path="/login" component={Login} />
+        
          
-         
-         }
-         <MovieList movies={movieList} />
-        </Route>
-        <Route path="/register">
+        {/* <Route path="/register">
           <Form  handleSubmite={handleSubmite}/>
         </Route>
         <Route path="/login">
@@ -116,12 +111,12 @@ put/delete: https://watertheplants.herokuapp.com/api/plants/:id   Slightly cuter
         </Route>
         <Route path="/login/?:logname&:logpass">
           {/* <Login submited={handleLogin}uL={userList} /> */
-             <Fcomp props={newU}/> 
+            //  <Fcomp props={newU}/> 
           
           
           }
-        </Route>
         
+         
         <Route  path="/plants">
           <MovieList movies={movieList} />
         </Route>
