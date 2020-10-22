@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, createContext } from 'react';
 
 
 export const StoreContext = React.createContext({});
@@ -18,7 +18,7 @@ export const ContextProvider = props => {
     localStorage.setItem('token', token);
     setState({ id, username });
   };
-  
+
   const context = { userInfo, setUserInfo };
 
 

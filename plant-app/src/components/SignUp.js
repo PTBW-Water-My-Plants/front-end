@@ -23,13 +23,17 @@ const SignUp = (props) => {
     e.preventDefault()
     console.log(credentials)
     axiosWithAuth()
-      .post('/auth/register', credentials)
-      .then(res => {
-        localStorage.setItem('token', res.data.token)
-        // props.history.push('/home')
-        console.log(res.data)
-      })
-      .catch(err => console.log(err))}
+      .post('https://watertheplants.herokuapp.com/api/auth/register', credentials)
+      .then(data =>console.log(data))
+      .catch(error => {
+        console.log(error)
+      })}
+      // .then(res => {
+      //   localStorage.setItem('token', res.data.token)
+      //   // props.history.push('/home')
+      //   console.log(res.data)
+      // })
+      // .catch(err => console.log(err))}
 
   return (
     <>
