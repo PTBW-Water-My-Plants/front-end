@@ -26,6 +26,10 @@ const Form =(props) => {
     const [urin,setUrin] = useState(false);
     const [usrs,setUsrs] = useState({id:0,name:"",email:"",password:"",phone:''})
     const [res,setRes] = useState([]);
+    const [formnames, setFormnames] = useState({
+        username: "",
+        password: ""
+      });
     const handleChange = (e) =>{
         e.persist();
         const ch= {...changes,[e.target.name]: e.target.value};
@@ -44,6 +48,8 @@ const Form =(props) => {
         // setSubmited(true);
         // const ch= {...changes,[e.target.name]: e.target.value};
         setUsrs(changes);
+        setFormnames({username:changes.username,password:changes.password})
+        console.log(usrs.username);
         setSubmited(true);
 }
 
@@ -86,11 +92,11 @@ const Form =(props) => {
     const postit = () =>{
                 
        if(submited){
-        axios.post(`http://localhost:5000/api/users/`,usrs)
+        axios.post(`https://watertheplants.herokuapp.com/api/auth/register`,{username:"hi",password:"ABigStairs"})
         .then(evn =>{
             console.log('ev')
             console.log(evn);
-            setRes(evn.data);
+            // setRes(evn.data);
           
             
         })

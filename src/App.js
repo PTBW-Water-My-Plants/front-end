@@ -67,7 +67,7 @@ put/delete: https://watertheplants.herokuapp.com/api/plants/:id   Slightly cuter
 
         if(loggedN === false){
            axios
-        .get(`http://localhost:5000/api/users`) // Study this endpoint with Postman
+        .get(`https://watertheplants.herokuapp.com/api/auth/login`) // Study this endpoint with Postman
         .then(response => {
           console.log(response.data);
           // setMovieList(response.data);
