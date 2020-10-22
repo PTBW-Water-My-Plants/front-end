@@ -4,9 +4,14 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import './App.css';
 import App from './App';
-
-// You'll need to wrap <App /> for routing to work
+import * as serviceWorker from './serviceWorker';
 ReactDOM.render(
-<Router>
-<App />
-</Router>, document.getElementById('root'));
+    <React.StrictMode>
+        <Router>
+             <App />
+        </Router>
+</React.StrictMode>, document.getElementById('root'));
+
+
+
+serviceWorker.unregister();
