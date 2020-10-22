@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { StoreContext } from '../contextAPI/Context.js';
 
-import { axiosWithAuth } from '../Auth/axiosWithAuth.js';
+import { axiosWithAuth } from '../auth/axiosWithAuth.js';
 
 export default function Login(props) {
   const { userInfo, setUserInfo } = useContext(StoreContext);
@@ -56,7 +56,7 @@ export default function Login(props) {
               value={form.password}
               onChange={handleChanges}
             />
-             <button onClick={PlantsList}>Login</button>
+             {/* <button onClick={PlantsList}>Login</button> */}
             
           </form>
           <button>
