@@ -69,9 +69,9 @@ put/delete: https://watertheplants.herokuapp.com/api/plants/:id   Slightly cuter
            axios
         .get(`https://watertheplants.herokuapp.com/api/auth/login`) // Study this endpoint with Postman
         .then(response => {
-          console.log(response.data);
+          console.log(response);
           // setMovieList(response.data);
-          setUserList(response.data);
+          setUserList(response);
     
         })
         .catch(error => {

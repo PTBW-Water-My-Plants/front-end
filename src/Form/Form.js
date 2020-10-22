@@ -92,6 +92,17 @@ const Form =(props) => {
     const postit = () =>{
                 
        if(submited){
+
+
+           /*
+  let data = JSON.stringify({
+            username: usrs.name,
+            password: usrs.password
+          });
+          
+          const response = axios.post(`https://watertheplants.herokuapp.com/api/auth/register/`,data,{headers:{"Content-Type" : "application/json"}});
+          console.log(response);
+           */
         axios.post(`https://watertheplants.herokuapp.com/api/auth/register`,{username:"hi",password:"ABigStairs"})
         .then(evn =>{
             console.log('ev')
