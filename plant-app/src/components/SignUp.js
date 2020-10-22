@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { axiosWithAuth } from './axiosWithAuth'
+import React, { useState } from 'react';
+import { axiosWithAuth } from '../auth/axiosWithAuth';
 import {BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 import styled from 'styled-components'
@@ -23,13 +23,17 @@ const SignUp = (props) => {
     e.preventDefault()
     console.log(credentials)
     axiosWithAuth()
-      .post('/auth/register', credentials)
-      .then(res => {
-        localStorage.setItem('token', res.data.token)
-        // props.history.push('/home')
-        console.log(res.data)
-      })
-      .catch(err => console.log(err))}
+      .post('https://watertheplants.herokuapp.com/api/auth/register', credentials)
+      .then(data =>console.log(data))
+      .catch(error => {
+        console.log(error)
+      })}
+      // .then(res => {
+      //   localStorage.setItem('token', res.data.token)
+      //   // props.history.push('/home')
+      //   console.log(res.data)
+      // })
+      // .catch(err => console.log(err))}
 
   return (
     <>
@@ -40,7 +44,7 @@ const SignUp = (props) => {
  
         <div>
         <h1>Welcome!</h1>
-        <p>Register your account below</p>
+        <p>Sign up for an account below</p>
           <form onSubmit={signUp}>
           <input
             type='text'
@@ -56,10 +60,10 @@ const SignUp = (props) => {
             value={credentials.password}
             onChange={handleChange}
           />
-          <button onClick={signUp}>Register</button>
+          <button onClick={signUp}>Sign Up!</button>
           </form>
                   
-          <Link to='/login'>Already have an account? - Sign In</Link>
+          <Link to='/login'>Already have an account? - Login</Link>
        
         </div>
 
