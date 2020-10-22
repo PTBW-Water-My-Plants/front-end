@@ -12,7 +12,7 @@ const Login =(props) => {
   const { uL } = props;
   const [usrs,setUsrs] = useState({id:0,name:"",email:"",
   password:""})
-  const [res,setRes] = useState([]);
+  const [res,setRes] = useState([{}]);
   const [logged,setLogged] = useState(false);
   const handleChange = (e) =>{
       e.persist();
@@ -49,10 +49,11 @@ const Login =(props) => {
   };
 
     return (
-      logged
+      logged && res != undefined
       ?
       <Fcomp id={res[res.length-1].id} name={res[res.length-1].name} 
-       email={res[res.length-1].email} password={res[res.length-1].password}/>
+       email={res[res.length-1].email} 
+       password={res[res.length-1].password}/>
         :
       <div className="App">
           <form className="App" onSubmit={submited}>

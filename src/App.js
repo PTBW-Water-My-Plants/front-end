@@ -52,6 +52,19 @@ const handleLogin = (user) =>{
       //     console.error('Server Error', error);
       //   });
 
+      // https://watertheplants.herokuapp.com/api/auth/login register: https://watertheplants.herokuapp.com/api/auth/register
+//https://watertheplants.herokuapp.com/api/auth/register
+/**
+ * Jonathan Stickrod  18:17
+login: https://watertheplants.herokuapp.com/api/auth/login register: https://watertheplants.herokuapp.com/api/auth/register
+
+Ben Dennett  18:20
+get/post: https://watertheplants.herokuapp.com/api/plants (edited) 
+18:22
+put/delete: https://watertheplants.herokuapp.com/api/plants/:id   Slightly cuter and more complete version of plant endpoints: https://documenter.getpostman.com/view/12284941/TVYC9KV7 (edited) 
+
+ */
+
         if(loggedN === false){
            axios
         .get(`http://localhost:5000/api/users`) // Study this endpoint with Postman
