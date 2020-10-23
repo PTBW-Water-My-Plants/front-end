@@ -6,11 +6,12 @@ import PrivateRoute from './Auth/PrivateRoute';
 
 import SignUp from './Auth/SignUp';
 import Login from './components/Login'
-
+import Heading from './Heading';
 
 function App() {
   return (
     <Router>
+      <Heading />
       {/* <StyledApp> */}
       <div className="App">
 

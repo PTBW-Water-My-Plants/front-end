@@ -39,25 +39,34 @@ const SignUp = (props) => {
     
  
         <div className="App">
-        <h1>Welcome!</h1>
-        <p>Register your account below</p>
-          <form className="App" onSubmit={signUp}>
-          <input
-            type='text'
-            name='username'
-            placeholder='NAME'
-            value={credentials.username}
-            onChange={handleChange}
-          />
-          <input
-            type='password'
-            name='password'
-            placeholder='PASSWORD'
-            value={credentials.password}
-            onChange={handleChange}
-          />
-          <button onClick={signUp}>Register</button>
-          </form>
+          <h1>Welcome!</h1>
+          <p>Register your account below</p>
+              <form className="App" onSubmit={signUp}>
+                <label htmlFor="username">
+                  USER NAME
+                </label>
+              <input
+                type='text'
+                name='username'
+                placeholder='NAME'
+                value={credentials.username}
+                onChange={handleChange}
+              />
+              <label htmlFor="password">
+                PASSWORD
+              </label>
+              <input
+                type='password'
+                name='password'
+                placeholder='PASSWORD'
+                value={credentials.password}
+                onChange={handleChange}
+              />
+              <label htmlFor="registerbtn">
+                REGISTER
+              </label>
+              <button name="registerbtn" onClick={signUp}>Register</button>
+            </form>
                   
           <Link to='/login'>Already have an account? - Sign In</Link>
        
