@@ -1,10 +1,20 @@
 import React, { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { StoreContext } from '../ContextAPI/Context';
-
+import './App.css'
 import { axiosWithAuth } from '../Auth/axiosWithAuth';
+import './index.css';
+import Styled from 'styled-components';
+import StyledButton from './StyledButton';
 
-export default function Login(props) {
+const DivT = Styled.div`
+  width:20%;
+  height: 100%;
+  background-color:tan;
+  color:blue;
+
+`;
+export default function Login (props) {
   const { userInfo, setUserInfo } = useContext(StoreContext);
   const [form, setForm] = useState({
     username: userInfo?.username,
@@ -36,11 +46,18 @@ export default function Login(props) {
   };
 
   return (
-    <div>
-        Login
-        <div>
-          <h1>Welcome back!</h1>
-          <form onSubmit={onSubmit}>
+
+        <div className="App">
+            <label htmlFor="loggingin">
+                Login
+              
+              <h1>Welcome back!</h1>
+            </label>
+          <form className="App" onSubmit={onSubmit}>
+            <label htmlFor="username">
+              USER NAME
+            
+            </label>
             <input
               
               type="username"
@@ -49,6 +66,9 @@ export default function Login(props) {
               value={form.username}
               onChange={handleChanges}
             />
+            <label htmlFor="password" >
+              PASSWORD
+            </label>
             <input
               type="password"
               name="password"
@@ -56,14 +76,15 @@ export default function Login(props) {
               value={form.password}
               onChange={handleChanges}
             />
+            
              <button >Login</button>
             
           </form>
-          <button>
+          <StyledButton>
             DON'T HAVE AN ACCOUNT?<NavLink to="/">SIGN UP</NavLink>
-          </button>
+          </StyledButton>
         </div>
       
-    </div>
+    
   );
 }
