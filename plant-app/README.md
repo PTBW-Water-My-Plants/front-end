@@ -1,68 +1,76 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Front end
+## Deployed on with netlify
+    https://pedantic-lichterman-c811ec.netlify.app/
+### What my plants Project ###
+## ☝️
+WaterMyPlants will remind users when it's time to feed that foliage and quench your plants' thirst.
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `yarn start`
+## ☝️ **Pitch**
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Ensuring that all your plants are consistently watered is actually pretty difficult. Water My Plants is an app that helps to solve those problems. 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+With an easy to use interface for creating a plant watering schedule tailored to each individual plant, WaterMyPlants will remind users when it's time to feed that foliage and quench your plants' thirst.
 
-### `yarn test`
+## ✅  **MVP**    
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Web & iOS**
 
-### `yarn build`
+1. `user` can sign-up / create an account by providing a unique `username`, a valid mobile `phoneNumber` and a `password`. 
+2. `user` can login to an authenticated session using the credentials provided at account creation / signup.
+3. Authenticated `user` can Create, Update and Delete a `plant` object. At a minimum, each `plant` must have the following properties: 
+    - `id`: Integer
+    - `nickname`: String
+    - `species` : String
+    - `h2oFrequency`: Type determined by implementation
+    - `image`: (optional)
+4. Authenticated `user` can view a list of created `plants`.  A `plant` can be deleted or selected to present `user` with a detail view where `user` can then update any property of the selected `plant`. 
+5. Authenticated `user` can update their `phoneNumber` and `password`.
+6. **( iOS only )** User can employ the camera to capture a photo of their plant, collecting image data and pushing it to the API for "create a plant" flow. Still can be optional.
+7. (**iOS only)** Set up application to allow local notifications.
+8. Authenticated `user` can update their `phoneNumber` and `password`.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🏃‍♀️ **Stretch**
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+1. Authenticated `user` can set up push notifications to be triggered when an `h2oFrequency` of any `plant` arrives / has elapsed. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Implement a feature that allows an authenticated `user` to see an appropriate suggested `h2oFrequency` based on `species` using the API of your choice. 
 
-### `yarn eject`
+3. Authenticated `user` can upload `image`s of a `plant`. If no user `image` is provided, a placeholder `image` of a plant of the same `species` populates the view.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## How to  Deploy on heroku 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+Install the Heroku CLI
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Download and install the Heroku CLI.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+If you haven't already, log in to your Heroku account and follow the prompts to create a new SSH public key.
 
-### Code Splitting
+$ heroku login
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Create a new Git repository
 
-### Analyzing the Bundle Size
+Initialize a git repository in a new or existing directory
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+$ cd my-project/
+$ git init
+$ heroku git:remote -a water-the-plants-app
 
-### Making a Progressive Web App
+Deploy your application
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Commit your code to the repository and deploy it to Heroku using Git.
 
-### Advanced Configuration
+$ git add .
+$ git commit -am "make it better"
+$ git push heroku master
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+You can now change your main deploy branch from "master" to "main" for both manual and automatic deploys, please follow the instructions here.
+Existing Git repository
 
-### Deployment
+For existing repositories, simply add the heroku remote
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+$ heroku git:remote -a water-the-plants-app
