@@ -3,7 +3,10 @@ import { NavLink } from 'react-router-dom';
 import { StoreContext } from '../contextAPI/Context.js';
 
 import { axiosWithAuth } from '../Auth/axiosWithAuth.js';
-
+import Styled from 'styled-components';
+const Divv = Styled.div`
+  background-color:blue;
+`;
 export default function Login(props) {
   const { userInfo, setUserInfo } = useContext(StoreContext);
   const [form, setForm] = useState({
@@ -34,13 +37,17 @@ export default function Login(props) {
         }
       });
   };
+const PlantsList = () =>{
 
+}
   return (
-    <div>
-        Login
-        <div>
+  
+        <div className="App">
           <h1>Welcome back!</h1>
-          <form onSubmit={onSubmit}>
+          <form className="App" onSubmit={onSubmit}>
+            <label htmlFor="username">
+              USER NAME
+            </label>
             <input
               
               type="username"
@@ -49,6 +56,9 @@ export default function Login(props) {
               value={form.username}
               onChange={handleChanges}
             />
+            <label htmlFor="password">
+              PASSWORD
+            </label>
             <input
               type="password"
               name="password"
@@ -56,6 +66,9 @@ export default function Login(props) {
               value={form.password}
               onChange={handleChanges}
             />
+            <label htmlFor="login">
+              LOGIN
+            </label>
              <button onClick={PlantsList}>Login</button>
             
           </form>
@@ -64,6 +77,6 @@ export default function Login(props) {
           </button>
         </div>
       
-    </div>
+  
   );
 }

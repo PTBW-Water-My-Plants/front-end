@@ -38,10 +38,10 @@ const SignUp = (props) => {
       Water My Plants
     
  
-        <div>
+        <div className="App">
         <h1>Welcome!</h1>
         <p>Register your account below</p>
-          <form onSubmit={signUp}>
+          <form className="App" onSubmit={signUp}>
           <input
             type='text'
             name='username'
