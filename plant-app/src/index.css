@@ -13,6 +13,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+p.error{
+  display: flex;
+  justify-content: space-evenly;
+  box-shadow: .1rem .2rem .1rem grey;
+  background-color: peachpuff;
+}
+.error{
+  color:red;
+  width:100%;
+  height:100%;
+  margin:1px;
+  padding:.3rem;
+
+}
 
 
 .movie-card {

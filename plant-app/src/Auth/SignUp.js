@@ -109,11 +109,11 @@ const validate = event => {
               <label htmlFor="username">
                   E-MAIL
                   {errorState.email.length > 0 ? (
-          <p className="error">{errorState.email}</p>
+          <p className="error App-logo">{errorState.email}</p>
         ) : null}
                 </label>
               <input
-                type='Email'
+                type='email'
                 name='email'
                 placeholder='EMAIL'
                 value={formSchema.email}
