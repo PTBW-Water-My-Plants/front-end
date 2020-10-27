@@ -4,6 +4,8 @@ import { StoreContext } from '../contextAPI/Context.js';
 
 import { axiosWithAuth } from '../auth/axiosWithAuth.js';
 
+import PlantsList from './PlantList'
+
 export default function Login(props) {
   const { userInfo, setUserInfo } = useContext(StoreContext);
   const [form, setForm] = useState({
@@ -17,23 +19,33 @@ export default function Login(props) {
       [e.target.name]: e.target.value
     });
   };
+
   const onSubmit = e => {
     e.preventDefault();
     axiosWithAuth()
-      .post('https://watertheplants.herokuapp.com/api/auth/register', form)
+      .post('api/auth/login', form)
       .then(res => {
-        console.log(res.data);
-        setUserInfo(res.data);
-//setTimeout(() => props.history.push('/Home'), 1000);
+        localStorage.setItem('token', res.data.token)
+        props.history.push('/home')
+        console.log(res.data)
       })
-      .catch(err => {
-        if (err.response) {
-          console.error('Error logging in: ', err.response.data);
-        } else {
-          console.error('Error logging in: ', err);
-        }
-      });
-  };
+      .catch(error => {
+        console.log(error)
+      })}
+
+  //     .then(res => {
+  //       console.log(res.data);
+  //       setUserInfo(res.data);
+  //       //setTimeout(() => props.history.push('/Home'), 1000);
+  //     })
+  //     .catch(err => {
+  //       if (err.response) {
+  //         console.error('Error logging in: ', err.response.data);
+  //       } else {
+  //         console.error('Error logging in: ', err);
+  //       }
+  //     });
+  // };
 
   return (
     <div>
@@ -46,18 +58,27 @@ export default function Login(props) {
               type="username"
               name="username"
               placeholder="USERNAME"
-              value={form.username}
+              value={form.username || ''}
               onChange={handleChanges}
             />
             <input
               type="password"
               name="password"
               placeholder="PASSWORD"
-              value={form.password}
+              value={form.password || ''}
               onChange={handleChanges}
             />
-             {/* <button onClick={PlantsList}>Login</button> */}
-            
+
+            <input
+            type='text'
+            name='phoneNumber'
+            placeholder='PHONENUMBER'
+            value={form.phoneNumber || ''}
+            onChange={handleChanges}
+          />
+            {/* <button onClick={PlantsList}>Login</button> */}
+            <button >Login</button>
+
           </form>
           <button>
             DON'T HAVE AN ACCOUNT?<NavLink to="/">SIGN UP</NavLink>

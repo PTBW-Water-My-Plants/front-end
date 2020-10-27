@@ -23,8 +23,12 @@ const SignUp = (props) => {
     e.preventDefault()
     console.log(credentials)
     axiosWithAuth()
-      .post('https://watertheplants.herokuapp.com/api/auth/register', credentials)
-      .then(data =>console.log(data))
+      .post('api/auth/register', credentials)
+      .then(res => {
+        localStorage.setItem('token', res.data.token)
+        props.history.push('/home')
+        console.log(res.data)
+      })
       .catch(error => {
         console.log(error)
       })}
@@ -50,16 +54,24 @@ const SignUp = (props) => {
             type='text'
             name='username'
             placeholder='NAME'
-            value={credentials.username}
+            value={credentials.username || ''}
             onChange={handleChange}
           />
           <input
             type='password'
             name='password'
             placeholder='PASSWORD'
-            value={credentials.password}
+            value={credentials.password || ''}
             onChange={handleChange}
           />
+          <input
+            type='text'
+            name='phoneNumber'
+            placeholder='PHONENUMBER'
+            value={credentials.phoneNumber || ''}
+            onChange={handleChange}
+          />
+
           <button onClick={signUp}>Sign Up!</button>
           </form>
                   

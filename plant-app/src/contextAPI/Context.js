@@ -7,7 +7,7 @@ export const StoreContext = React.createContext({});
 export const ContextProvider = props => {
   // Password should be removed when going live, this is just for ease of development
   const [userInfo, setState] = useState({
-    id: null,
+    id: '',
     username: '',
     password: ''
   });
@@ -20,7 +20,6 @@ export const ContextProvider = props => {
   };
 
   const context = { userInfo, setUserInfo };
-
 
   return (
     <StoreContext.Provider value={context}>
